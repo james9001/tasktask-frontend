@@ -1,9 +1,5 @@
 {
   "name": "tasktask-frontend",
-  "integrations": {
-    "capacitor": {
-      "enabled": false
-    }
-  },
+  "integrations": {},
   "type": "angular"
 }
