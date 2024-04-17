@@ -5,9 +5,10 @@ import { FormsModule } from "@angular/forms";
 import { HomePage } from "./home.page";
 
 import { HomePageRoutingModule } from "./home-routing.module";
+import { GenericDataTableModule } from "src/app/components/genericdatatable/genericdatatable.module";
 
 @NgModule({
-	imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+	imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule, GenericDataTableModule],
 	declarations: [HomePage],
 })
 export class HomePageModule {}
