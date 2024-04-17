@@ -1,0 +1,15 @@
+dist
+www
+node_modules
+.env
+.gitignore
+.prettierignore
+.prettierrc
+Dockerfile
+package-lock.json
+package.json
+/.vscode
+
+*.yaml
+*.yml
+*.json
