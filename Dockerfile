@@ -40,7 +40,7 @@ COPY --from=nodemodules /temp/node_modules/ /app/node_modules
 
 RUN npm install -g ionic
 
-RUN ionic build --configuration production
+RUN ionic build --configuration web
 
 
 # Runtime
@@ -52,7 +52,12 @@ COPY --from=build /app/www/ /usr/share/nginx/html
 
 COPY /nginx-custom.conf /etc/nginx/conf.d/default.conf
 
+COPY entrypoint-custom.sh /entrypoint-custom.sh
+
 #dummy copy to ensure lint phase happens
 COPY --from=lint /app/README.md /README.md
 
 EXPOSE 80
+
+ENTRYPOINT ["/entrypoint-custom.sh"]
+CMD ["nginx", "-g", "daemon off;"]
