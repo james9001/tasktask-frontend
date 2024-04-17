@@ -1,0 +1,9 @@
+{
+  "name": "tasktask-frontend",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    }
+  },
+  "type": "angular"
+}
