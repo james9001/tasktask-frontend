@@ -13,8 +13,7 @@ export class GenericDataTableComponent implements OnInit {
 	@Output() onClickOpenEditFired = new EventEmitter<GenericDatatableModel>();
 	@Output() setPageFired = new EventEmitter<void>();
 
-	//TODO: handle sorting across pagination
-	public sort: SortType = SortType.multi;
+	public sort: SortType = SortType.single;
 
 	constructor() {}
 
