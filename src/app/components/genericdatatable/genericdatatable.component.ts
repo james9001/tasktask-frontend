@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { SortType } from "@swimlane/ngx-datatable";
 import { GenericDataTableState, GenericDatatableModel } from "./genericdatatable.model";
 
@@ -7,7 +7,7 @@ import { GenericDataTableState, GenericDatatableModel } from "./genericdatatable
 	templateUrl: "./genericdatatable.component.html",
 	styleUrls: ["./genericdatatable.component.scss"],
 })
-export class GenericDataTableComponent implements OnInit {
+export class GenericDataTableComponent {
 	@Input() state!: GenericDataTableState;
 
 	@Output() onClickOpenEditFired = new EventEmitter<GenericDatatableModel>();
@@ -19,11 +19,6 @@ export class GenericDataTableComponent implements OnInit {
 
 	public onClickOpenEdit(_: Event, row: GenericDatatableModel) {
 		this.onClickOpenEditFired.emit(row);
-	}
-
-	public ngOnInit() {
-		//TODO: Is this actually needed?
-		//void this.setPage({ offset: 0 });
 	}
 
 	public async setPage(pageInfo: NgxDatatablePageInfo) {

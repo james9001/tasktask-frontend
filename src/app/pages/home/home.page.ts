@@ -43,7 +43,6 @@ export class HomePage {
 		});
 
 		this.state.models = response.data;
-		//TODO: could be buggy, improve
 		this.state.pageInfo = response.page;
 	}
 
