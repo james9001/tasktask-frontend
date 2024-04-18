@@ -18,12 +18,13 @@
 			lines="full"
 			class="ion-activatable"
 		>
-			<ion-label position="stacked" color="primary" class="ion-text-wrap">{{column.name}}</ion-label>
 			<ion-input
 				[(ngModel)]="model[column.realName]"
 				name="{{column.realName}}"
 				type="text"
 				required="true"
+				label="{{column.name}}"
+				labelPlacement="stacked"
 			>
 			</ion-input>
 		</ion-item>
