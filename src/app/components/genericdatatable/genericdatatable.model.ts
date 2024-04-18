@@ -5,11 +5,13 @@ export interface GenericDataTableState {
 }
 
 export interface GenericDatatableModel {
-	id: string; //TODO: UUID
+	[key: string]: string;
+	id: string;
 }
 
 export interface GenericDataTableColumn {
 	name: string;
+	realName: string;
 }
 
 export interface GenericDatatablePageInfo {

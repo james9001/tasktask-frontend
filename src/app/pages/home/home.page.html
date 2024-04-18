@@ -11,5 +11,14 @@
 		</ion-toolbar>
 	</ion-header>
 
-	<generic-datatable [state]="state" (setPageFired)="onSetPageFired()"></generic-datatable>
+	<generic-datatable
+		[state]="state"
+		(setPageFired)="onSetPageFired()"
+		(onClickOpenEditFired)="onClickOpenExisting($event)"
+	></generic-datatable>
+	<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+		<ion-fab-button (click)="onClickAddNew()">
+			<ion-icon name="add"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
 </ion-content>

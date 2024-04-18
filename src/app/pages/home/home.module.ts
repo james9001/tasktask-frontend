@@ -6,9 +6,17 @@ import { HomePage } from "./home.page";
 
 import { HomePageRoutingModule } from "./home-routing.module";
 import { GenericDataTableModule } from "src/app/components/genericdatatable/genericdatatable.module";
+import { GenericdataeditPageModule } from "src/app/components/genericdataedit/genericdataedit.module";
 
 @NgModule({
-	imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule, GenericDataTableModule],
+	imports: [
+		CommonModule,
+		FormsModule,
+		IonicModule,
+		HomePageRoutingModule,
+		GenericDataTableModule,
+		GenericdataeditPageModule,
+	],
 	declarations: [HomePage],
 })
 export class HomePageModule {}

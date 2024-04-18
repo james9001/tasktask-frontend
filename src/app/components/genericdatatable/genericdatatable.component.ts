@@ -10,7 +10,7 @@ import { GenericDataTableState, GenericDatatableModel } from "./genericdatatable
 export class GenericDataTableComponent implements OnInit {
 	@Input() state!: GenericDataTableState;
 
-	@Output() onClickOpenEditFired = new EventEmitter<string>();
+	@Output() onClickOpenEditFired = new EventEmitter<GenericDatatableModel>();
 	@Output() setPageFired = new EventEmitter<void>();
 
 	//TODO: handle sorting across pagination
@@ -19,7 +19,7 @@ export class GenericDataTableComponent implements OnInit {
 	constructor() {}
 
 	public onClickOpenEdit(_: Event, row: GenericDatatableModel) {
-		this.onClickOpenEditFired.emit(row.id);
+		this.onClickOpenEditFired.emit(row);
 	}
 
 	public ngOnInit() {

@@ -1,0 +1,31 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-item lines="none">
+			<ion-title class="title-header">View Item</ion-title>
+		</ion-item>
+		<ion-buttons slot="end">
+			<ion-button *ngIf="model.id" (click)="onClickSave()">Save</ion-button>
+			<ion-button *ngIf="!model.id" (click)="onClickCreate()">Create</ion-button>
+			<ion-button (click)="onClickClose()">Close</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form novalidate>
+		<ion-item
+			*ngFor="let column of state.columns; let i = index"
+			lines="full"
+			class="ion-activatable"
+		>
+			<ion-label position="stacked" color="primary" class="ion-text-wrap">{{column.name}}</ion-label>
+			<ion-input
+				[(ngModel)]="model[column.realName]"
+				name="{{column.realName}}"
+				type="text"
+				required="true"
+			>
+			</ion-input>
+		</ion-item>
+	</form>
+</ion-content>

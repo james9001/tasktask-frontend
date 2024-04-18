@@ -13,10 +13,19 @@ export class TaskData {
 			this.http.post<TaskSearchResponse>("http://localhost:8091/api/task/search", criteria),
 		);
 	};
+
+	public create = async (model: Task): Promise<Task> => {
+		return lastValueFrom(this.http.post<Task>("http://localhost:8091/api/task", model));
+	};
+
+	public update = async (model: Task): Promise<Task> => {
+		return lastValueFrom(this.http.put<Task>("http://localhost:8091/api/task", model));
+	};
 }
 
 export interface Task {
-	id: string; //TODO: UUID
+	[key: string]: string;
+	id: string;
 	name: string;
 	description: string;
 }
