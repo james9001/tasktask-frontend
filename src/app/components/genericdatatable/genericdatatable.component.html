@@ -25,7 +25,12 @@
 					></ion-icon>
 				</div>
 				<div *ngIf="column.name !== 'Name'">
-					{{ value }}
+					<div *ngIf="column.dataType === 'string'">
+						{{ value }}
+					</div>
+					<div *ngIf="column.dataType === 'datetime'">
+						{{ value | date: "yyyy-MM-dd h:mm a" }}
+					</div>
 				</div>
 			</ng-template>
 		</ngx-datatable-column>

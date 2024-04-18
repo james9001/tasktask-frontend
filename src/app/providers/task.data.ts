@@ -24,10 +24,12 @@ export class TaskData {
 }
 
 export interface Task {
-	[key: string]: string;
+	[key: string]: string | bigint;
 	id: string;
 	name: string;
 	description: string;
+	dueDate: bigint;
+	createdDate: bigint;
 }
 
 export interface TaskSearchRequestCriteria {

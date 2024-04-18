@@ -16,8 +16,10 @@ export class HomePage {
 	public state: GenericDataTableState = {
 		models: [],
 		columns: [
-			{ name: "Name", realName: "name" },
-			{ name: "Description", realName: "description" },
+			{ name: "Name", realName: "name", dataType: "string", readOnly: false },
+			{ name: "Description", realName: "description", dataType: "string", readOnly: false },
+			{ name: "Due Date", realName: "dueDate", dataType: "datetime", readOnly: false },
+			{ name: "Created Date", realName: "createdDate", dataType: "datetime", readOnly: true },
 		],
 		pageInfo: {
 			pageSize: 10,
@@ -59,6 +61,8 @@ export class HomePage {
 			id: "",
 			name: "",
 			description: "",
+			dueDate: BigInt(""),
+			createdDate: BigInt(""),
 		});
 	}
 
