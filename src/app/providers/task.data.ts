@@ -77,7 +77,7 @@ export interface Task {
 	description: string;
 	dueDate: string;
 	createdDate: string;
-	status: string;
+	status: string; //This could be improved with proper typing
 }
 
 interface TaskDto {

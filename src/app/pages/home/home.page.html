@@ -13,8 +13,8 @@
 
 	<generic-datatable
 		[state]="state"
-		(setPageFired)="onSetPageFired()"
-		(onClickOpenEditFired)="onClickOpenExisting($event)"
+		(setPageNumberEvent)="onSetPageNumberEvent()"
+		(clickOpenEditEvent)="onClickOpenEditEvent($event)"
 	></generic-datatable>
 	<ion-fab slot="fixed" vertical="bottom" horizontal="end">
 		<ion-fab-button (click)="onClickAddNew()">

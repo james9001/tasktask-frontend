@@ -11,7 +11,6 @@ import { DateTimeUtil } from "src/app/providers/date-time.util";
 @Component({
 	selector: "app-home",
 	templateUrl: "home.page.html",
-	styleUrls: ["home.page.scss"],
 })
 export class HomePage {
 	public state: GenericDataTableState = {
@@ -50,11 +49,11 @@ export class HomePage {
 		void this.loadData();
 	}
 
-	public async onSetPageFired(): Promise<void> {
+	public async onSetPageNumberEvent(): Promise<void> {
 		void this.loadData();
 	}
 
-	public async onClickOpenExisting(model: GenericDatatableModel) {
+	public async onClickOpenEditEvent(model: GenericDatatableModel) {
 		await this.openGenericDataEdit(model as Task);
 	}
 

@@ -10,20 +10,20 @@ import { GenericDataTableState, GenericDatatableModel } from "./genericdatatable
 export class GenericDataTableComponent {
 	@Input() state!: GenericDataTableState;
 
-	@Output() onClickOpenEditFired = new EventEmitter<GenericDatatableModel>();
-	@Output() setPageFired = new EventEmitter<void>();
+	@Output() clickOpenEditEvent = new EventEmitter<GenericDatatableModel>();
+	@Output() setPageNumberEvent = new EventEmitter<void>();
 
 	public sort: SortType = SortType.single;
 
 	constructor() {}
 
 	public onClickOpenEdit(_: Event, row: GenericDatatableModel) {
-		this.onClickOpenEditFired.emit(row);
+		this.clickOpenEditEvent.emit(row);
 	}
 
 	public async setPage(pageInfo: NgxDatatablePageInfo) {
 		this.state.pageInfo.pageNumber = pageInfo.offset!;
-		this.setPageFired.emit();
+		this.setPageNumberEvent.emit();
 	}
 }
 
