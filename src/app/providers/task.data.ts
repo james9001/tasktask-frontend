@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { lastValueFrom } from "rxjs/internal/lastValueFrom";
 import { DateTimeUtil } from "./date-time.util";
+import { environment } from "src/environments/environment";
 
 @Injectable({
 	providedIn: "root",
@@ -14,7 +15,7 @@ export class TaskData {
 
 	public search = async (criteria: TaskSearchRequestCriteria): Promise<TaskSearchResponse> => {
 		const response = await lastValueFrom(
-			this.http.post<TaskSearchResponseDto>("http://localhost:8091/api/task/search", criteria),
+			this.http.post<TaskSearchResponseDto>(`${environment.serverUrl}/api/task/search`, criteria),
 		);
 		return {
 			page: response.page,
@@ -25,7 +26,7 @@ export class TaskData {
 	public create = async (model: Task): Promise<Task> => {
 		return this.mapFromDto(
 			await lastValueFrom(
-				this.http.post<TaskDto>("http://localhost:8091/api/task", this.mapToDto(model)),
+				this.http.post<TaskDto>(`${environment.serverUrl}/api/task`, this.mapToDto(model)),
 			),
 		);
 	};
@@ -33,7 +34,7 @@ export class TaskData {
 	public update = async (model: Task): Promise<Task> => {
 		return this.mapFromDto(
 			await lastValueFrom(
-				this.http.put<TaskDto>("http://localhost:8091/api/task", this.mapToDto(model)),
+				this.http.put<TaskDto>(`${environment.serverUrl}/api/task`, this.mapToDto(model)),
 			),
 		);
 	};
