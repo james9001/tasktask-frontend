@@ -16,7 +16,6 @@ export class HomePage {
 	public state: GenericDataTableState = {
 		models: [],
 		columns: [
-			{ name: "Id", realName: "id" },
 			{ name: "Name", realName: "name" },
 			{ name: "Description", realName: "description" },
 		],

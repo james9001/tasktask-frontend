@@ -16,7 +16,7 @@
 	>
 		<ngx-datatable-column *ngFor="let column of state.columns" [name]="column.name">
 			<ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-				<div *ngIf="column.name === 'Id'" class="datatable-edit-column">
+				<div *ngIf="column.name === 'Name'" class="datatable-edit-column">
 					{{ value }}
 					<ion-icon
 						name="create-outline"
@@ -24,7 +24,7 @@
 						(click)="onClickOpenEdit($event, row)"
 					></ion-icon>
 				</div>
-				<div *ngIf="column.name !== 'Id'">
+				<div *ngIf="column.name !== 'Name'">
 					{{ value }}
 				</div>
 			</ng-template>
