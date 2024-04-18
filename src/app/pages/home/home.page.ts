@@ -6,6 +6,7 @@ import {
 import { TaskData, Task } from "../../providers/task.data";
 import { ModalController } from "@ionic/angular";
 import { GenericdataeditPage } from "src/app/components/genericdataedit/genericdataedit.page";
+import { DateTimeUtil } from "src/app/providers/date-time.util";
 
 @Component({
 	selector: "app-home",
@@ -20,6 +21,7 @@ export class HomePage {
 			{ name: "Description", realName: "description", dataType: "string", readOnly: false },
 			{ name: "Due Date", realName: "dueDate", dataType: "datetime", readOnly: false },
 			{ name: "Created Date", realName: "createdDate", dataType: "datetime", readOnly: true },
+			{ name: "Status", realName: "status", dataType: "string", readOnly: true },
 		],
 		pageInfo: {
 			pageSize: 10,
@@ -31,6 +33,7 @@ export class HomePage {
 	constructor(
 		private taskData: TaskData,
 		private modalController: ModalController,
+		private dateTimeUtil: DateTimeUtil,
 	) {}
 
 	public async loadData(): Promise<void> {
@@ -61,8 +64,9 @@ export class HomePage {
 			id: "",
 			name: "",
 			description: "",
-			dueDate: "",
-			createdDate: "",
+			dueDate: this.dateTimeUtil.applyDateTimeFormatting(new Date().toISOString()),
+			createdDate: this.dateTimeUtil.applyDateTimeFormatting(new Date().toISOString()),
+			status: "",
 		});
 	}
 

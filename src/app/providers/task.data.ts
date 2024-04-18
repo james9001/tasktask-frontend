@@ -1,13 +1,16 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { lastValueFrom } from "rxjs/internal/lastValueFrom";
-import { formatDate } from "@angular/common";
+import { DateTimeUtil } from "./date-time.util";
 
 @Injectable({
 	providedIn: "root",
 })
 export class TaskData {
-	constructor(private http: HttpClient) {}
+	constructor(
+		private http: HttpClient,
+		private dateTimeUtil: DateTimeUtil,
+	) {}
 
 	public search = async (criteria: TaskSearchRequestCriteria): Promise<TaskSearchResponse> => {
 		const response = await lastValueFrom(
@@ -36,11 +39,25 @@ export class TaskData {
 	};
 
 	private mapFromDto = (dto: TaskDto): Task => {
+		const dueDate = this.dateTimeUtil.applyDateTimeFormatting(dto.dueDate.toString());
 		return {
 			...dto,
-			dueDate: formatDate(dto.dueDate.toString(), "yyyy-MM-dd'T'HH:mm:ss", "en-US"),
-			createdDate: formatDate(dto.createdDate.toString(), "yyyy-MM-dd'T'HH:mm:ss", "en-US"),
+			dueDate: dueDate,
+			createdDate: this.dateTimeUtil.applyDateTimeFormatting(dto.createdDate.toString()),
+			status: this.getTaskStatus(new Date(dueDate), new Date()),
 		};
+	};
+
+	private getTaskStatus = (dueDate: Date, now: Date): string => {
+		if (now > dueDate) {
+			return "Overdue";
+		}
+		const nowPlusSevenDays = new Date(now);
+		nowPlusSevenDays.setDate(now.getDate() + 7);
+		if (nowPlusSevenDays > dueDate) {
+			return "Due soon";
+		}
+		return "Not urgent";
 	};
 
 	private mapToDto = (model: Task): TaskDto => {
@@ -59,6 +76,7 @@ export interface Task {
 	description: string;
 	dueDate: string;
 	createdDate: string;
+	status: string;
 }
 
 interface TaskDto {
