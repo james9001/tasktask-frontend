@@ -61,8 +61,8 @@ export class HomePage {
 			id: "",
 			name: "",
 			description: "",
-			dueDate: BigInt(""),
-			createdDate: BigInt(""),
+			dueDate: "",
+			createdDate: "",
 		});
 	}
 

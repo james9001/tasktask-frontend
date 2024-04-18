@@ -25,8 +25,20 @@
 				required="true"
 				label="{{column.name}}"
 				labelPlacement="stacked"
+				*ngIf="column.dataType === 'string'"
 			>
 			</ion-input>
+			<ion-datetime
+				*ngIf="column.dataType === 'datetime'"
+				presentation="date-time"
+				[(ngModel)]="model[column.realName]"
+				name="{{column.realName}}"
+				required="true"
+				min="2020-01-01T00:00:00"
+				max="2100-12-31T23:59:59"
+			>
+				<span slot="title">Due Date</span>
+			</ion-datetime>
 		</ion-item>
 	</form>
 </ion-content>

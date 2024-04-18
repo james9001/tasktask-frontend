@@ -5,7 +5,7 @@ export interface GenericDataTableState {
 }
 
 export interface GenericDatatableModel {
-	[key: string]: string | bigint;
+	[key: string]: string;
 	id: string;
 }
 
